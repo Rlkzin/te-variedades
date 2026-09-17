@@ -13,7 +13,10 @@
     reviews: 'te_reviews'
   };
 
-  const ADMIN = { email: 'dona@te.com', password: 'te123456' };
+  /* A senha da dona NÃO fica no site. Quando publicado (TE_API configurado),
+     password é null e o login é validado no servidor (variável ADMIN_PASSWORD).
+     "te123456" existe apenas no modo local de desenvolvimento (sem TE_API). */
+  const ADMIN = { email: 'dona@te.com', password: window.TE_API ? null : 'te123456' };
 
 const EMAIL_DEFAULTS = { serviceId: "1", templateId: "template_24ovzze", publicKey: "tVUkZu_f6VIreWiCn" };
 

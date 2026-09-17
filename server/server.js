@@ -19,6 +19,14 @@ const SUPABASE_KEY = process.env.SUPABASE_KEY || '';
 const STORE_TABLE = process.env.SUPABASE_TABLE || 'store';
 const useSupabase = Boolean(SUPABASE_URL && SUPABASE_KEY);
 
+/* ===== Painel da dona (oculto) =====
+   ADMIN_PATH  -> endereço secreto do painel (ex.: "adm-x9k2v7"). Quando
+                  definido, /admin.html passa a responder 404 e o painel
+                  só existe em /<ADMIN_PATH>.
+   ADMIN_PASSWORD -> senha real da dona. Não fica em nenhum arquivo do site. */
+const ADMIN_PATH = process.env.ADMIN_PATH ? String(process.env.ADMIN_PATH).replace(/^\/+|\/+$/g, '') : '';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ? String(process.env.ADMIN_PASSWORD) : '';
+
 const COLLECTIONS = ['products', 'users', 'orders', 'shipping', 'banner', 'coupons', 'woovi', 'reviews'];
 
 const MIME = {
@@ -134,7 +142,7 @@ function handleSSE(req, res) {
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 }
 
@@ -173,13 +181,7 @@ function readBody(req) {
   });
 }
 
-function serveStatic(req, res, pathname) {
-  let rel = decodeURIComponent(pathname);
-  if (rel === '/' || rel === '') rel = '/index.html';
-  const filePath = path.resolve(ROOT, '.' + rel);
-  if (filePath !== ROOT && !filePath.startsWith(ROOT + path.sep)) {
-    res.writeHead(403); res.end('Forbidden'); return;
-  }
+function serveFile(res, filePath) {
   fs.stat(filePath, (err, stat) => {
     if (err || !stat.isFile()) {
       res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
@@ -194,6 +196,16 @@ function serveStatic(req, res, pathname) {
     });
     fs.createReadStream(filePath).pipe(res);
   });
+}
+
+function serveStatic(req, res, pathname) {
+  let rel = decodeURIComponent(pathname);
+  if (rel === '/' || rel === '') rel = '/index.html';
+  const filePath = path.resolve(ROOT, '.' + rel);
+  if (filePath !== ROOT && !filePath.startsWith(ROOT + path.sep)) {
+    res.writeHead(403); res.end('Forbidden'); return;
+  }
+  serveFile(res, filePath);
 }
 
 const server = http.createServer((req, res) => {
@@ -213,6 +225,15 @@ const server = http.createServer((req, res) => {
     }
     if (pathname === '/api/events' && req.method === 'GET') {
       handleSSE(req, res);
+      return;
+    }
+    if (pathname === '/api/admin/login' && req.method === 'POST') {
+      if (!ADMIN_PASSWORD) { sendJSON(res, 404, { error: 'login não habilitado' }); return; }
+      readBody(req).then((value) => {
+        const body = value || {};
+        if (String(body.password) === ADMIN_PASSWORD) sendJSON(res, 200, { ok: true });
+        else sendJSON(res, 401, { error: 'credenciais inválidas' });
+      }).catch((e) => sendJSON(res, 400, { error: e.message }));
       return;
     }
     const match = pathname.match(/^\/api\/col\/([a-z]+)$/);
@@ -235,6 +256,22 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  /* ===== Painel da dona (oculto) =====
+     Com ADMIN_PATH, /admin.html não existe mais publicamente:
+     o painel só vive em /<ADMIN_PATH>. */
+  const panelUrl = ADMIN_PATH ? '/' + ADMIN_PATH : '';
+  const isPanelRequest = !!panelUrl && (pathname === panelUrl || pathname === panelUrl + '/');
+  const isPlainAdmin = pathname === '/admin.html' || pathname === '/admin';
+  if (isPlainAdmin || isPanelRequest) {
+    if (req.method !== 'GET' && req.method !== 'HEAD') {
+      res.writeHead(405); res.end('Method Not Allowed'); return;
+    }
+    if (isPanelRequest) { serveFile(res, path.join(ROOT, 'admin.html')); return; }
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('404 - Não encontrado');
+    return;
+  }
+
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     res.writeHead(405); res.end('Method Not Allowed'); return;
   }
@@ -252,7 +289,7 @@ function boot() {
     console.log('  T&E Variedades - servidor no ar!');
     console.log('  ------------------------------------------');
     console.log('  Loja .......... http://localhost:' + PORT + '/');
-    console.log('  Painel ........ http://localhost:' + PORT + '/admin.html');
+    console.log('  Painel ......... ' + (ADMIN_PATH ? 'http://localhost:' + PORT + '/' + ADMIN_PATH + '  (endereço secreto)' : 'http://localhost:' + PORT + '/admin.html'));
     ips.forEach((ip) => {
       console.log('  Celular/Wi-Fi . http://' + ip + ':' + PORT + '/');
     });

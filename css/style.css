@@ -459,7 +459,8 @@ button { cursor: pointer; font-family: inherit; }
 .footer-brand .logo { color: #fff; }
 .footer-brand p { font-size: 0.9rem; line-height: 1.7; margin: 16px 0; opacity: 0.7; }
 .socials { display: flex; gap: 12px; }
-.socials a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: grid; place-items: center; transition: 0.3s; }
+.socials a { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.1); display: grid; place-items: center; transition: 0.3s; }
+.socials a svg { width: 21px; height: 21px; fill: currentColor; }
 .socials a:hover { background: var(--pink); transform: translateY(-4px); }
 .footer-col h4 { color: #fff; margin-bottom: 18px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; }
 .footer-col a { display: block; padding: 6px 0; font-size: 0.88rem; opacity: 0.7; transition: 0.3s; }

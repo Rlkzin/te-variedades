@@ -562,30 +562,32 @@
         if (el.panel) el.panel.classList.add("hidden");
         const form = $("#adminLoginForm");
         if (form) {
-          form.addEventListener("submit", (e) => {
+          form.addEventListener("submit", async (e) => {
             e.preventDefault();
             const email = $("#adminEmail").value.trim();
             const password = $("#adminPassword").value;
-            if (email.toLowerCase() === Store.ADMIN.email && password === Store.ADMIN.password) {
-              Auth.loginAdmin(Store.ADMIN.email, Store.ADMIN.password);
-              showToast("Bem-vinda, Dona! 💖");
-              if (el.login) el.login.classList.add("hidden");
-              AdminPanel.show();
-            } else if (email.toLowerCase() === Store.ADMIN.email) {
-              showToast("Senha errada. A senha da dona é: te123456", "error");
-            } else if (password === Store.ADMIN.password) {
-              showToast("E-mail errado. O e-mail da dona é: dona@te.com", "error");
-            } else {
-              showToast("E-mail e senha errados. Use dona@te.com / te123456", "error");
-            }
+            const btn = form.querySelector("button[type=submit]");
+            if (btn) { btn.disabled = true; }
+            const res = await Auth.loginAdmin(email, password);
+            if (btn) { btn.disabled = false; }
+            if (res.error) return showToast(res.error, "error");
+            showToast("Bem-vinda, Dona! 💖");
+            if (el.login) el.login.classList.add("hidden");
+            AdminPanel.show();
           });
         }
         const fill = $("#fillAdminHint");
-        if (fill) fill.addEventListener("click", () => {
-          $("#adminEmail").value = Store.ADMIN.email;
-          $("#adminPassword").value = Store.ADMIN.password;
-          showToast("Preenchido! É só clicar em Entrar 💖");
-        });
+        if (fill) {
+          if (Store.ADMIN.password == null) {
+            fill.classList.add("hidden");
+          } else {
+            fill.addEventListener("click", () => {
+              $("#adminEmail").value = Store.ADMIN.email;
+              $("#adminPassword").value = Store.ADMIN.password;
+              showToast("Preenchido! É só clicar em Entrar 💖");
+            });
+          }
+        }
       }
     } else {
       if (el.panel) el.panel.classList.add("hidden");

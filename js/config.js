@@ -3,7 +3,7 @@
    - Preenchido = endereço do servidor Node hospedado à parte (ex.: Render).
    Exemplo: window.TE_API = "https://te-variedades.onrender.com";
 */
-window.TE_API = "https://te-variedades.onrender.com";
+window.TE_API = "https://te-variedades-1.onrender.com";
 
 /* Token de gravação (opcional).
    Deve ser IGUAL ao que estiver em API_TOKEN ao iniciar o servidor.

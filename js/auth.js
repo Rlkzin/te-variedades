@@ -31,12 +31,33 @@
       if (!user) return "";
       return user.nickname || String(user.name || "").split(" ")[0] || "cliente";
     },
-    loginAdmin: function (email, password) {
-      if (email === Store.ADMIN.email && password === Store.ADMIN.password) {
-        Store.setSession({ admin: true, name: "Dona T&E", email });
-        return { success: true };
+    loginAdmin: async function (email, password) {
+      const seed = Store.ADMIN;
+      if (seed.password != null) {
+        if (email.trim().toLowerCase() === seed.email && password === seed.password) {
+          Store.setSession({ admin: true, name: "Dona T&E", email: seed.email });
+          return { success: true };
+        }
+        return { error: "Acesso negado. Verifique suas credenciais de dona." };
       }
-      return { error: "Acesso negado. Verifique suas credenciais de dona." };
+      const base = (window.TE_API ? String(window.TE_API).replace(/\/+$/, "") : location.origin) || "http://localhost:3000";
+      try {
+        const r = await fetch(base + "/api/admin/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email, password: password })
+        });
+        if (r.status === 200) {
+          Store.setSession({ admin: true, name: "Dona T&E", email: email });
+          return { success: true };
+        }
+        if (r.status === 404) {
+          return { error: "A senha da dona ainda não foi definida no servidor (variável ADMIN_PASSWORD)." };
+        }
+        return { error: "Acesso negado. Verifique suas credenciais de dona." };
+      } catch (e) {
+        return { error: "Não foi possível validar no servidor. Tente novamente em instantes." };
+      }
     },
     register: function (data) {
       const users = Store.getUsers();

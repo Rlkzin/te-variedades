@@ -682,19 +682,16 @@
   el.authTabs.forEach((t) => t.addEventListener("click", () => switchTab(t.dataset.tab)));
   el.footerLogin.addEventListener("click", (e) => { e.preventDefault(); openAuth(); });
 
-  el.loginForm.addEventListener("submit", (e) => {
+  el.loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const email = $("#loginEmail").value.trim();
     const password = $("#loginPassword").value;
     if (email.toLowerCase() === Store.ADMIN.email) {
-      if (password === Store.ADMIN.password) {
-        Auth.loginAdmin(email, password);
-        closeAuth(); el.loginForm.reset();
-        showToast("Bem-vinda, Dona! Painel aberto 💝");
-        enterAdminMode();
-      } else {
-        showToast("Senha errada. A senha da dona é: te123456", "error");
-      }
+      const res = await Auth.loginAdmin(email, password);
+      if (res.error) return showToast(res.error, "error");
+      closeAuth(); el.loginForm.reset();
+      showToast("Bem-vinda, Dona! Painel aberto 💝");
+      enterAdminMode();
       return;
     }
     const res = Auth.login(email, password);
