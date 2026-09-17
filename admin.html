@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel da Dona - T&E Variedades</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff2e7e'/%3E%3Cstop offset='1' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='bold' fill='%23fff' text-anchor='middle'%3ET%26E%3C/text%3E%3Ccircle cx='32' cy='13' r='3.5' fill='%23ffe3ee'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#ff2e7e">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="admin">
+  <div id="toast" class="toast"></div>
+
+  <!-- ===== Login da dona ===== -->
+  <div id="adminLogin" class="admin-login">
+    <div class="login-card">
+      <a href="index.html" class="logo-card">T<span>&</span>E <small>Variedades</small></a>
+      <div class="lock-icon">🔐</div>
+      <h1>Área da dona</h1>
+      <p>Acesso único da lojinha. Entre para gerenciar produtos, ofertas e pedidos.</p>
+      <form id="adminLoginForm">
+        <input type="email" id="adminEmail" placeholder="E-mail da dona" required>
+        <input type="password" id="adminPassword" placeholder="Senha" required>
+        <button type="submit" class="btn btn-primary btn-full">Entrar no painel</button>
+      </form>
+      <p class="hint">💡 Demo: <strong>dona@te.com</strong> / senha <strong>te123456</strong><br>
+        <button type="button" id="fillAdminHint" class="hint-fill">Clique aqui para preencher automaticamente</button>
+      </p>
+      <a href="index.html" class="back-link">← Voltar para a loja</a>
+    </div>
+  </div>
+
+  <!-- ===== Painel ===== -->
+  <div id="adminPanel" class="admin-panel hidden">
+    <header class="admin-header">
+      <div class="admin-header-inner">
+        <a href="index.html" class="logo">T<span>&</span>E <small>Variedades</small></a>
+        <div class="admin-header-actions">
+          <a href="index.html" class="btn-link">Ver loja ↗</a>
+          <button id="logoutBtn" class="btn-link">Sair</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="admin-tabs">
+      <button class="admin-tab active" data-tab="dashboard">📊 Resumo</button>
+      <button class="admin-tab" data-tab="products">🧴 Produtos</button>
+      <button class="admin-tab" data-tab="orders">📦 Pedidos</button>
+      <button class="admin-tab" data-tab="coupons">🎟️ Cupons</button>
+      <button class="admin-tab" data-tab="settings">⚙️ Frete & Loja</button>
+    </nav>
+
+    <main class="admin-main">
+
+      <!-- Dashboard -->
+      <section id="tab-dashboard" class="tab-panel active">
+        <h2 class="tab-title">Oi, Dona! 👋</h2>
+        <div class="stat-cards">
+          <div class="stat-card"><span>Produtos ativos</span><h3 id="statProducts">0</h3></div>
+          <div class="stat-card"><span>Pedidos</span><h3 id="statOrders">0</h3></div>
+          <div class="stat-card"><span>Receita (vendas)</span><h3 id="statRevenue">R$ 0,00</h3></div>
+          <div class="stat-card"><span>Produtos em oferta</span><h3 id="statOffers">0</h3></div>
+        </div>
+        <div class="quick-actions">
+          <h3>Ações rápidas</h3>
+          <div class="qa-grid">
+            <button class="qa-btn" data-goto="products" data-action="new">➕ Cadastrar produto</button>
+            <button class="qa-btn" data-goto="orders">📦 Ver pedidos</button>
+            <button class="qa-btn" data-goto="settings">🚚 Ajustar frete</button>
+            <button class="qa-btn" data-goto="settings">🛍️ Trocar aviso da loja</button>
+            <button class="qa-btn" data-goto="coupons" data-action="new-coupon">🎟️ Criar cupom</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section id="tab-products" class="tab-panel">
+        <div class="tab-head">
+          <h2 class="tab-title">Gerencie seus produtos</h2>
+          <button id="newProductBtn" class="btn btn-primary">➕ Novo produto</button>
+        </div>
+
+        <!-- Product form -->
+        <form id="productForm" class="product-form hidden">
+          <h3 id="productFormTitle">Novo produto</h3>
+          <div class="form-grid">
+            <div class="form-field">
+              <label>Título *</label>
+              <input type="text" id="pName" placeholder="Ex.: Batom Matte Rosé" required>
+            </div>
+            <div class="form-field">
+              <label>Categoria *</label>
+              <select id="pCategory">
+                <option value="maquiagem">Maquiagem</option>
+                <option value="cosmeticos">Cosméticos</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Preço (R$) *</label>
+              <input type="number" id="pPrice" placeholder="59.90" step="0.01" min="0" required>
+            </div>
+            <div class="form-field">
+              <label>Preço original (de:)</label>
+              <input type="number" id="pOldPrice" placeholder="79.90 (deixe vazio sem oferta)" step="0.01" min="0">
+            </div>
+            <div class="form-field full">
+              <label>Descrição *</label>
+              <textarea id="pDesc" placeholder="Descreva o produto..." required></textarea>
+            </div>
+            <div class="form-field">
+              <label>Foto do produto</label>
+              <input type="file" id="pImage" accept="image/*">
+              <small class="field-hint">Ajustamos e salvamos a foto automaticamente. Sem foto, usamos o emoji.</small>
+            </div>
+            <div class="form-field">
+              <label>Emoji (sem foto)</label>
+              <input type="text" id="pEmoji" value="🧴" maxlength="4" placeholder="🧴">
+            </div>
+          </div>
+          <div id="pImagePreview" class="img-preview hidden"><img id="pImagePreviewImg" alt=""><button type="button" id="pClearImage" class="btn-link danger">Remover foto</button></div>
+          <div class="form-actions">
+            <button type="submit" id="productSubmit" class="btn btn-primary">Salvar produto</button>
+            <button type="button" id="productCancel" class="btn btn-outline">Cancelar</button>
+          </div>
+        </form>
+
+        <!-- Products list -->
+        <div id="adminProductsList" class="products-list"></div>
+      </section>
+
+      <!-- Orders -->
+      <section id="tab-orders" class="tab-panel">
+        <h2 class="tab-title">Pedidos & frete</h2>
+        <p class="tab-sub">Atualize o status e o código de rastreio (Frete Fácil). O cliente acompanha em “Meus pedidos”.</p>
+        <div id="adminOrdersList" class="orders-list"></div>
+      </section>
+
+      <!-- Coupons -->
+      <section id="tab-coupons" class="tab-panel">
+        <div class="tab-head">
+          <h2 class="tab-title">Cupons 🎟️</h2>
+          <button id="newCouponBtn" class="btn btn-primary">➕ Novo cupom</button>
+        </div>
+        <p class="tab-sub">Cupons <strong>automáticos</strong> (boas-vindas e metas de compra) valem para todos os clientes. Cupons <strong>manuais</strong> são públicos e você limita quantas vezes podem ser usados.</p>
+
+        <form id="couponForm" class="coupon-form hidden">
+          <h3 id="couponFormTitle">Novo cupom</h3>
+          <div class="form-grid">
+            <div class="form-field">
+              <label>Código *</label>
+              <input type="text" id="cCode" placeholder="Ex.: BEMVINDA10, TE50, VIP2026" required>
+            </div>
+            <div class="form-field">
+              <label>Tipo</label>
+              <select id="cType">
+                <option value="percent">% de desconto</option>
+                <option value="fixed">R$ de desconto</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Valor *</label>
+              <input type="number" id="cValue" step="0.01" min="0" placeholder="10">
+            </div>
+            <div class="form-field">
+              <label>Compra mínima (R$, 0 = sem mínimo)</label>
+              <input type="number" id="cMinSpend" step="0.01" min="0" value="0">
+            </div>
+            <div class="form-field">
+              <label>Quantas vezes pode ser usado (0 = à vontade)</label>
+              <input type="number" id="cUses" min="0" value="0">
+            </div>
+            <div class="form-field">
+              <label>Como libera?</label>
+              <select id="cGrant">
+                <option value="manual">Manual (todo mundo pode digitar o código)</option>
+                <option value="welcome">Boas-vindas (todo cadastro ganha)</option>
+                <option value="threshold">Ao gastar um valor</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field" id="cThresholdWrap">
+            <label>Valor de compra (R$) para liberar automaticamente</label>
+            <input type="number" id="cThreshold" step="0.01" min="0" placeholder="150">
+          </div>
+          <div class="form-field full">
+            <label>Texto exibido para o cliente</label>
+            <input type="text" id="cTitle" placeholder="Ex.: Gastou R$150 → ganhou 10% OFF">
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="couponSubmit" class="btn btn-primary">Salvar cupom</button>
+            <button type="button" id="couponCancel" class="btn btn-outline">Cancelar</button>
+          </div>
+        </form>
+
+        <div id="adminCouponsList" class="coupons-list"></div>
+      </section>
+
+      <!-- Settings -->
+      <section id="tab-settings" class="tab-panel">
+        <h2 class="tab-title">Frete & configurações da loja</h2>
+
+        <div class="settings-card">
+          <h3>🚚 Frete Fácil</h3>
+          <p class="tab-sub">O frete é calculado como uma porcentagem do valor do carrinho (padrão dos Frete Fácil). Você define o percentual.</p>
+          <div class="settings-row">
+            <div class="form-field">
+              <label>Percentual padrão do frete (%)</label>
+              <input type="number" id="shipPercent" step="0.1" min="0" max="100">
+            </div>
+            <div class="form-field">
+              <label>Nome do frete exibido na loja</label>
+              <input type="text" id="shipText" placeholder="Envio via Frete Fácil">
+            </div>
+          </div>
+          <label class="toggle-row">
+            <input type="checkbox" id="shipActive" checked>
+            <span>Frete ativo (desmarque para frete grátis na loja)</span>
+          </label>
+          <button id="saveShip" class="btn btn-primary">Salvar frete</button>
+        </div>
+
+        <div class="settings-card">
+          <h3>🛍️ Aviso no topo da loja</h3>
+          <p class="tab-sub">Aparece como uma faixa colorida no topo do site (ex.: "Promoção de batons 20% OFF!").</p>
+          <textarea id="bannerText" placeholder="Ex.: 🔥 Só hoje: frete grátis acima de R$ 100!" rows="2"></textarea>
+          <button id="saveBanner" class="btn btn-primary">Salvar aviso</button>
+        </div>
+
+        <div class="settings-card">
+          <h3>💳 Pix real (Woovi)</h3>
+          <p class="tab-sub">Cole a AppID da Woovi para gerar o QR Code Pix real no checkout. Sem preencher, o QR é gerado pela loja (pix avulso).</p>
+          <div class="form-field">
+            <label>AppID da Woovi</label>
+            <input type="password" id="wooviAppId" placeholder="Q2xpZW50X0lk_..." autocomplete="off">
+          </div>
+          <div class="form-field">
+            <label>Chave Pix da loja (apenas se não usar a Woovi)</label>
+            <input type="text" id="wooviPixKey" placeholder="ex.: 6b6ada5a-d1d4-46e3-af76-d0b2acf76d2d" autocomplete="off">
+          </div>
+          <button id="saveWoovi" class="btn btn-primary">Salvar Woovi</button>
+          <p class="tab-sub">Após o cliente pagar, use "Verificar Pix" na aba Pedidos para confirmar o pagamento.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/guard.js"></script>
+  <script src="js/vendor/emailjs.min.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

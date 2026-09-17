@@ -1,0 +1,13 @@
+{
+  "name": "te-variedades",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Loja T&E Variedades - site estatico + servidor de sincronizacao (tempo real)",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

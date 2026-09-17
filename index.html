@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T&E Variedades - Cosméticos & Maquiagem</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff2e7e'/%3E%3Cstop offset='1' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='bold' fill='%23fff' text-anchor='middle'%3ET%26E%3C/text%3E%3Ccircle cx='32' cy='13' r='3.5' fill='%23ffe3ee'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#ff2e7e">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="home">
+
+  <!-- Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-bubble"><div class="bubble"></div><div class="bubble b2"></div><div class="bubble b3"></div></div>
+    <p>T&E</p>
+  </div>
+
+  <div class="site-shell">
+
+  <!-- Announcement bar -->
+  <div class="ann-bar" id="annBar" style="display:none"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">T<span>&</span>E <small>Variedades</small></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Início</a></li>
+        <li><a href="#shop">Produtos</a></li>
+        <li><a href="#how">Como funciona</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Alternar tema">
+          <span class="theme-icon" id="themeIcon">🌙</span>
+        </button>
+        <button class="icon-btn logged-only notif-btn" id="notifBtn" aria-label="Notificações">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="notif-badge hidden" id="notifBadge">0</span>
+        </button>
+        <button class="icon-btn" id="userBtn" aria-label="Conta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="icon-btn logged-only" id="cartBtn" aria-label="Carrinho">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn logged-only" id="ordersBtn" aria-label="Minhas compras">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </button>
+        <button class="burger" id="burger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div class="hero-decor d1"></div>
+    <div class="hero-decor d2"></div>
+    <div class="hero-decor d3"></div>
+    <div class="hero-bubbles"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="hero-content reveal">
+      <span class="hero-stamp">✨ T&E Variedades</span>
+      <h1>Beleza e estilo com o seu <span class="gradient-text">glamour</span></h1>
+      <p>Cosméticos de cuidado e maquiagem de alta fixação para você brilhar em qualquer ocasião. Envio em todo o Brasil via Frete Fácil.</p>
+      <div class="hero-cta">
+        <a href="#shop" class="btn btn-primary">Comprar agora</a>
+        <a href="#about" class="btn btn-outline">Conhecer a loja</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="bottle-wrap">
+        <div class="product-glow"></div>
+        <div class="mini-product mp1">💄</div>
+        <div class="mini-product mp2">🧴</div>
+        <div class="mini-product mp3">🎨</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Benefits -->
+  <section class="benefits">
+    <div class="benefit reveal">
+      <div class="benefit-icon">📦</div>
+      <h3>Envio via Frete Fácil</h3>
+      <p>Frete calculado no checkout para todo o Brasil</p>
+    </div>
+    <div class="benefit reveal">
+      <div class="benefit-icon">💸</div>
+      <h3>Ofertas da Semana</h3>
+      <p>Promoções fresquinhas direto da dona</p>
+    </div>
+    <div class="benefit reveal">
+      <div class="benefit-icon">💳</div>
+      <h3>Pague com Pix</h3>
+      <p>QR code na hora · cartão e boleto em breve</p>
+    </div>
+    <div class="benefit reveal">
+      <div class="benefit-icon">💖</div>
+      <h3>Feito com carinho</h3>
+      <p>Loja gerida de perto, produto a produto</p>
+    </div>
+  </section>
+
+  <!-- Ofertas strip -->
+  <section class="shop" id="offers">
+    <div class="section-head reveal">
+      <span class="section-tag">🔥 Ofertas</span>
+      <h2>Aproveite as <span class="gradient-text">promoções</span></h2>
+      <p id="offersEmpty">Conferindo as novidades da semana...</p>
+    </div>
+    <div class="products-grid" id="offersGrid"></div>
+    <div id="noUserNoticeOffers" class="no-user-notice hidden"></div>
+  </section>
+
+  <!-- Shop -->
+  <section class="shop" id="shop">
+    <div class="section-head reveal">
+      <span class="section-tag">Nossa Coleção</span>
+      <h2>Nossos <span class="gradient-text">produtos</span></h2>
+      <p>Escolha seus favoritos e monte sua rotina de beleza perfeita</p>
+    </div>
+    <div class="toolbar reveal">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Buscar produto...">
+      </div>
+      <div class="filter-bar" id="filterBar"></div>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+    <div id="noUserNotice" class="no-user-notice hidden">
+      <p>💖 Faça <a href="#" id="noUserLogin">login</a> para adicionar produtos ao carrinho</p>
+    </div>
+    <div id="noResults" class="no-results hidden">😕 Nenhum produto encontrado para sua busca.</div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how" id="how">
+    <div class="section-head reveal">
+      <span class="section-tag">Como funciona</span>
+      <h2>Do clique ao <span class="gradient-text">recebimento</span></h2>
+      <p>Simples assim: compra, envio e acompanhamento em todo o Brasil</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3>Escolha seus produtos</h3>
+        <p>Navegue pela loja e adicione os itens ao carrinho.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3>Pague com Pix</h3>
+        <p>QR code gerado na hora — e o frete é calculado na hora pelo valor (Frete Fácil).</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3>Enviamos via Frete Fácil</h3>
+        <p>Confirmado o pagamento, embalamos com carinho e enviamos para todo o Brasil.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h3>Receba em casa</h3>
+        <p>Você acompanha tudo em "Minhas compras", com status e código de rastreio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="section-head reveal">
+      <span class="section-tag">Depoimentos</span>
+      <h2>Quem compra, <span class="gradient-text">recomenda</span></h2>
+      <p>Opiniões reais de quem já recebeu o seu em casa</p>
+    </div>
+    <div class="t-slider reveal">
+      <button class="t-arrow" id="tPrev" aria-label="Anterior">‹</button>
+      <div class="testimonials-row" id="testimonialsRow"></div>
+      <button class="t-arrow" id="tNext" aria-label="Próximo">›</button>
+    </div>
+    <div class="t-dots" id="tDots"></div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="about-visual reveal">
+      <div class="about-img">
+        <div class="about-orb">T&E</div>
+        <span class="about-badge">🌸</span>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <span class="section-tag">Sobre a loja</span>
+      <h2>A beleza em cada <span class="gradient-text">detalhe</span></h2>
+      <p>A T&E Variedades é uma lojinha curada com todo o capricho: cosméticos de cuidado para o dia a dia e maquiagem de alta fixação para arrasar nas ocasiões especiais. Cada produto passa pelo nosso carinho antes de sair da portinha direto para o Frete Fácil.</p>
+      <div class="about-info">
+        <div class="info-chip"><span>🌎</span><strong>Enviamos para todo o Brasil</strong><small>Via Frete Fácil (PAC/SEDEX), com código de rastreio para você acompanhar.</small></div>
+        <div class="info-chip"><span>🛍️</span><strong>Como operamos</strong><small>Você escolhe, paga do seu jeito, nós postamos e o pedido chega na sua casa.</small></div>
+        <div class="info-chip"><span>💝</span><strong>Cuidado em cada etapa</strong><small>Embalagem caprichada, frete justo e atendimento de gente para gente.</small></div>
+      </div>
+      <div id="statsRow" class="stats"></div>
+      <a href="#shop" class="btn btn-primary">Explorar coleção</a>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team" id="team">
+    <div class="section-head reveal">
+      <span class="section-tag">Equipe</span>
+      <h2>Quem faz a <span class="gradient-text">T&E</span></h2>
+      <p>As mãos que escolhem, embalam e entregam o seu carinho — e quem cuidou de cada detalhe deste site</p>
+    </div>
+    <div class="team-row">
+      <div class="team-card reveal">
+        <div class="team-avatar" style="--tc:#ff6fa5">T</div>
+        <h3>Thatiane</h3>
+        <span class="team-role">Cofundadora · Seleção & Embalagem</span>
+        <p>Escolhe com carinho os cosméticos e maquiagens do catálogo e capricha na embalagem de cada pedido, para chegar inteirinho até você.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar" style="--tc:#a855f7">E</div>
+        <h3>Emilly</h3>
+        <span class="team-role">Cofundadora · Atendimento</span>
+        <p>Responde no WhatsApp, tira dúvidas, acompanha os pedidos e garante que tudo chegue certinho — de gente para gente.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar" style="--tc:#f59e0b">D</div>
+        <h3>Doiss</h3>
+        <span class="team-role">Programador do site</span>
+        <p>Desenvolveu a T&E do zero: a lojinha virtual, o painel de pedidos, o carrinho, o frete e cada botãozinho que você vê por aqui.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="contact" id="contact">
+    <div class="newsletter reveal">
+      <div class="newsletter-text">
+        <span class="section-tag">Newsletter</span>
+        <h2>Receba ofertas <span style="color:#fff">exclusivas</span></h2>
+        <p>Cadastre seu e-mail e fique por dentro das novidades da T&E.</p>
+      </div>
+      <form class="newsletter-form" id="newsForm">
+        <input type="email" placeholder="Seu melhor e-mail" required>
+        <button type="submit" class="btn btn-primary">Assinar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Support -->
+  <section class="support" id="support">
+    <div class="section-head reveal">
+      <span class="section-tag">Suporte</span>
+      <h2>Precisa de <span class="gradient-text">ajuda</span>?</h2>
+      <p>Estamos por aqui para te atender com todo o carinho, de gente para gente</p>
+    </div>
+    <div class="support-grid">
+      <div class="support-card reveal">
+        <div class="support-icon">💬</div>
+        <h3>WhatsApp</h3>
+        <p>Atendimento de segunda a sábado, das 9h às 18h.</p>
+        <a href="#" id="supportWhats" class="btn btn-outline">Chamar no WhatsApp</a>
+      </div>
+      <div class="support-card reveal">
+        <div class="support-icon">📧</div>
+        <h3>E-mail</h3>
+        <p>Respondemos em até 24 horas úteis.</p>
+        <a href="#" id="supportMail" class="btn btn-outline">contato@tevariedades.com</a>
+      </div>
+      <div class="support-card reveal">
+        <div class="support-icon">📦</div>
+        <h3>Pedidos & Rastreio</h3>
+        <p>Acompanhe seus pedidos e o código do Frete Fácil.</p>
+        <a href="#" data-open-orders class="btn btn-outline">Acompanhar pedido</a>
+      </div>
+    </div>
+
+    <div class="faq reveal" id="faq">
+      <h3>Perguntas frequentes</h3>
+      <div class="faq-item">
+        <button class="faq-q">Quanto tempo demora a entrega?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Enviamos para todo o Brasil via Frete Fácil. O prazo médio é de 5 a 15 dias úteis dependendo da região (PAC e SEDEX), contados a partir do envio.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Qual o valor do frete?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>O frete é calculado no carrinho como uma porcentagem do valor do pedido, seguindo o padrão do Frete Fácil. Você vê o valor exato antes de pagar.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Como acompanho meu pedido?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Logado na loja, abra "Minhas compras" (ícone ao lado do carrinho). Ali aparece o status (aguardando pagamento, pago, enviado ou entregue) e o código de rastreio do Frete Fácil.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Quais formas de pagamento vocês aceitam?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Aceitamos Pix na hora — o site gera o QR code e o código copia-e-cola no checkout. Cartão de crédito e boleto estão em manutenção 🔧 por enquanto. Você escolhe a forma no finalzinho da compra.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Posso trocar ou devolver um produto?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Sim! Trocas e devoluções são resolvidas direto com a gente. É só chamar no WhatsApp ou e-mail que a gente cuida de tudo com todo o cuidado.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo">T<span>&</span>E <small>Variedades</small></a>
+        <p>Cosméticos e maquiagem com propósito: beleza, cuidado e carinho em cada detalhe.</p>
+        <div class="socials">
+          <a href="#" data-toast="Instagram em breve" aria-label="Instagram">📷</a>
+          <a href="#" data-toast="TikTok em breve" aria-label="TikTok">🎵</a>
+          <a href="#" data-toast="WhatsApp em breve" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Loja</h4>
+        <a href="#shop">Todos os produtos</a>
+        <a href="#shop" data-filter-jump="maquiagem">Maquiagem</a>
+        <a href="#shop" data-filter-jump="skincare">Skincare</a>
+        <a href="#shop" data-filter-jump="perfumaria">Perfumaria</a>
+        <a href="#shop" data-filter-jump="higiene">Higiene</a>
+        <a href="#offers">Promoções</a>
+        <a href="#team">Nossa equipe</a>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <a href="#about">Sobre a loja</a>
+        <a href="#" data-toast="Termos em breve">Termos de uso</a>
+        <a href="#" data-toast="Política em breve">Política de privacidade</a>
+        <a href="#contact">Fale conosco</a>
+      </div>
+      <div class="footer-col">
+        <h4>Suporte</h4>
+        <a href="#" id="footerSupportWhats">Falar no WhatsApp</a>
+        <a href="#" id="footerSupportMail">Enviar e-mail</a>
+        <a href="#support">Central de ajuda</a>
+      </div>
+      <div class="footer-col">
+        <h4>Acesso</h4>
+        <a href="#" id="footerLogin">Entrar / Cadastrar</a>
+        <a href="#" id="footerTrack">Minhas compras</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 T&E Variedades. Todos os direitos reservados.</p>
+      <p class="footer-team">Loja com 💖 por <strong>Thatiane</strong> &amp; <strong>Emilly</strong> · Site criado por <strong>Doiss</strong> 🖥️</p>
+    </div>
+  </footer>
+
+  </div><!-- /site-shell -->
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Seu Carrinho 🛒</h3>
+      <button class="close-x" id="closeCart">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-breakdown" id="cartBreakdown"></div>
+      <div class="cart-total"><span>Total</span><span id="cartTotal">R$ 0,00</span></div>
+      <button class="btn btn-primary btn-full" id="checkoutBtn">Finalizar compra</button>
+    </div>
+  </aside>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Notifications -->
+  <div class="notif-overlay" id="notifOverlay"></div>
+  <div class="notif-panel" id="notifPanel">
+    <div class="notif-head">
+      <h3>Notificações 🔔</h3>
+      <div class="notif-head-actions">
+        <button id="notifMarkAll">Ler tudo</button>
+        <button id="notifClear" class="danger">Limpar</button>
+        <button class="close-x" id="notifClose">✕</button>
+      </div>
+    </div>
+    <div class="notif-list" id="notifList"></div>
+  </div>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal product-modal">
+      <button class="close-x" id="closeProduct">✕</button>
+      <div class="pm-grid">
+        <div class="pm-media" id="pmMedia"></div>
+        <div class="pm-info">
+          <span class="pm-cat" id="pmCat"></span>
+          <h2 id="pmName"></h2>
+          <div class="pm-stars" id="pmStars"></div>
+          <div class="price-row">
+            <span class="price" id="pmPrice"></span>
+            <span class="old-price" id="pmOld"></span>
+          </div>
+          <p class="pm-desc" id="pmDesc"></p>
+          <button class="btn btn-primary btn-full" id="pmAdd">Adicionar ao carrinho</button>
+        </div>
+      </div>
+
+      <div class="pm-reviews">
+        <h3 class="pm-reviews-title">Avaliações <span id="pmReviewCount" class="pm-review-count"></span></h3>
+        <div id="pmReviewsList" class="pm-reviews-list"></div>
+
+        <div class="pm-review-form" id="pmReviewForm">
+          <h4>Sua avaliação</h4>
+          <div class="stars-input" id="pmStarsInput">
+            <button type="button" data-star="1">★</button>
+            <button type="button" data-star="2">★</button>
+            <button type="button" data-star="3">★</button>
+            <button type="button" data-star="4">★</button>
+            <button type="button" data-star="5">★</button>
+          </div>
+          <div class="field"><textarea id="pmReviewText" rows="3" placeholder="Conte como foi sua experiência com o produto..."></textarea></div>
+          <label class="pm-photo-label" for="pmReviewPhoto">📷 Adicionar foto</label>
+          <input type="file" id="pmReviewPhoto" accept="image/*" hidden>
+          <div id="pmPhotoPreview" class="pm-photo-preview hidden">
+            <img id="pmPhotoImg" alt="Prévia da foto">
+            <button type="button" id="pmPhotoRemove" aria-label="Remover foto">✕</button>
+          </div>
+          <button type="button" class="btn btn-primary btn-full" id="pmSubmitReview">Enviar avaliação</button>
+          <p class="pm-login-hint" id="pmLoginHint">Você precisa entrar na sua conta para avaliar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox de foto -->
+  <div class="photo-lightbox" id="photoLightbox">
+    <img id="photoLightboxImg" alt="Foto da avaliação">
+  </div>
+
+  <!-- Auth Modal (cliente) -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal">
+      <button class="close-x" id="closeModal">✕</button>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Entrar</button>
+        <button class="auth-tab" data-tab="register">Cadastrar</button>
+      </div>
+      <form id="loginForm" class="auth-form active">
+        <h2>Bem-vinda de volta! 💖</h2>
+        <p>Entre para continuar comprando</p>
+        <div class="field"><input type="email" id="loginEmail" placeholder="E-mail" required></div>
+        <div class="field"><input type="password" id="loginPassword" placeholder="Senha" required></div>
+        <button type="submit" class="btn btn-primary btn-full">Entrar</button>
+        <p class="switch-text">Não tem conta? <a href="#" id="goRegister">Cadastre-se</a></p>
+      </form>
+      <form id="registerForm" class="auth-form">
+        <div id="registerFields">
+          <h2>Crie sua conta ✨</h2>
+          <p>Comece a comprar na T&E Variedades</p>
+          <div class="field"><input type="text" id="regFullName" placeholder="Nome completo (vai ficar bloqueado)*" required></div>
+          <div class="field"><input type="text" id="regNickname" placeholder="Apelido / como quer ser chamada(o)"></div>
+          <div class="field"><input type="email" id="regEmail" placeholder="E-mail*" required></div>
+          <div class="field"><input type="text" id="regPhone" placeholder="WhatsApp / telefone"></div>
+          <div class="field"><input type="password" id="regPassword" placeholder="Senha (mín. 6 caracteres)*" required></div>
+          <button type="submit" class="btn btn-primary btn-full">Criar conta</button>
+          <p class="switch-text">Já tem conta? <a href="#" id="goLogin">Entre aqui</a></p>
+        </div>
+        <div id="verifyStep" class="verify-step hidden">
+          <h2>Confirme seu e-mail 📩</h2>
+          <p>Enviamos um código de 6 dígitos para <strong id="verifyEmail"></strong>. Ele expira em 5 minutos.</p>
+          <div class="field"><input type="text" id="verifyCodeInput" placeholder="Código de 6 dígitos" inputmode="numeric" maxlength="6" autocomplete="one-time-code"></div>
+          <p id="verifyMsg" class="verify-msg"></p>
+          <button type="button" class="btn btn-primary btn-full" id="verifySubmit">Confirmar código</button>
+          <div class="verify-row">
+            <button type="button" class="btn-text" id="verifyResend">Reenviar código</button>
+            <button type="button" class="btn-text" id="verifyBack">← Voltar</button>
+          </div>
+          <p class="switch-text">Já tem conta? <a href="#" id="goLogin2">Entre aqui</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal checkout">
+      <button class="close-x" id="closeCheckout">✕</button>
+      <h2>Finalizar compra 🛍️</h2>
+      <div class="checkout-summary" id="checkoutSummary"></div>
+      <div class="shipping-box" id="shippingBox"></div>
+      <div class="coupon-box" id="couponBox">
+        <div class="coupon-input-row">
+          <input type="text" id="couponInput" placeholder="Código do cupom 🎟️">
+          <button type="button" id="couponApply" class="btn btn-outline">Aplicar</button>
+        </div>
+        <div id="couponMsg"></div>
+        <div class="cupom-applied hidden" id="couponApplied">
+          <span>🎟️ <strong id="couponCodeLabel"></strong> <span id="couponValueLabel"></span></span>
+          <button type="button" id="couponRemove" aria-label="Remover cupom">✕</button>
+        </div>
+      </div>
+      <form id="checkoutForm">
+        <input type="text" placeholder="Nome completo" required>
+        <input type="text" placeholder="Endereço completo" required>
+        <input type="text" placeholder="CEP" id="checkoutCep" required>
+        <input type="text" placeholder="Cidade / Estado" required>
+        <div class="pay-methods" id="payMethods">
+          <label class="pay-opt selected" data-pay="Pix">
+            <input type="radio" name="pay" value="Pix" checked>
+            <span class="pay-icon">💸</span>
+            <span class="pay-name">Pix <small>na hora</small></span>
+          </label>
+          <label class="pay-opt disabled" data-pay="Cartão de crédito">
+            <input type="radio" name="pay" value="Cartão de crédito" disabled>
+            <span class="pay-icon">💳</span>
+            <span class="pay-name">Cartão <small class="maint">em manutenção 🔧</small></span>
+          </label>
+          <label class="pay-opt disabled" data-pay="Boleto">
+            <input type="radio" name="pay" value="Boleto" disabled>
+            <span class="pay-icon">🧾</span>
+            <span class="pay-name">Boleto <small class="maint">em manutenção 🔧</small></span>
+          </label>
+        </div>
+        <div class="pix-box" id="pixBox">
+          <div class="pix-total">Pague <strong id="pixAmount">R$ 0,00</strong> em qualquer banco via Pix</div>
+          <img id="pixQr" alt="QR Code do Pix" width="190" height="190">
+          <div class="pix-copy">
+            <input type="text" id="pixCode" readonly>
+            <button type="button" class="btn btn-outline" id="pixCopy">Copiar</button>
+          </div>
+          <p class="pix-hint">📱 Escaneie o QR com o app do seu banco, ou use o código copia-e-cola acima.</p>
+          <p id="pixStatus" class="pix-status"></p>
+          <p class="track-hint">O pedido fica "aguardando pagamento" até a loja confirmar.</p>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Confirmar pedido</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal success-modal">
+      <button class="close-x" id="closeSuccess">✕</button>
+      <div class="success-icon">🎉</div>
+      <h2>Pedido confirmado!</h2>
+      <p>Obrigada pela compra, <span id="successName">cliente</span>!</p>
+      <div class="success-order" id="successOrder"></div>
+      <button class="btn btn-primary btn-full" id="successDone">Continuar comprando</button>
+    </div>
+  </div>
+
+  <!-- Minhas Compras Dashboard -->
+  <div class="modal-overlay" id="ordersDashModal">
+    <div class="modal dash-modal">
+      <button class="close-x" id="closeOrdersDash">✕</button>
+      <h2>Minhas compras 📦</h2>
+      <div class="dash-stats" id="dashStats"></div>
+      <div class="dash-tabs">
+        <button class="dash-tab active" data-dashtab="pending">⏳ Aguardando pagamento</button>
+        <button class="dash-tab" data-dashtab="bought">✅ Minhas compras</button>
+      </div>
+      <div id="dashPending" class="dash-list"></div>
+      <div id="dashBought" class="dash-list"></div>
+      <button class="btn btn-outline btn-full" id="ordersDashDone">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div class="modal-overlay" id="profileModal">
+    <div class="modal profile-modal">
+      <button class="close-x" id="closeProfile">✕</button>
+      <h2>Meu perfil 👤</h2>
+      <div class="profile-avatar">
+        <img id="profileAvatar" src="" alt="Avatar">
+        <label class="avatar-upload" for="profilePhoto">📷 Trocar foto</label>
+        <input type="file" id="profilePhoto" accept="image/*" hidden>
+      </div>
+      <div class="profile-stats" id="profileStats"></div>
+      <div class="profile-coupons">
+        <h3>🎟️ Seus cupons</h3>
+        <div id="profileCoupons"></div>
+        <p class="coupon-hint">💡 Cada pedido pago soma para liberar cupons novos. Acompanhe os valores em "Minhas compras".</p>
+      </div>
+      <div class="profile-fields">
+        <div class="field locked-field">
+          <label>Nome real </label>
+          <input type="text" id="profileRealName" disabled>
+          <span class="lock-tag">🔒 Sem edição após o cadastro</span>
+        </div>
+        <div class="field">
+          <label>Apelido (como você quer ser chamada(o))</label>
+          <input type="text" id="profileNickname">
+        </div>
+        <div class="field locked-field">
+          <label>E-mail (bloqueado)</label>
+          <input type="email" id="profileEmail" disabled>
+        </div>
+        <div class="field">
+          <label>WhatsApp / telefone</label>
+          <input type="text" id="profilePhone">
+        </div>
+      </div>
+      <div class="form-actions modal-actions">
+        <button class="btn btn-primary" id="saveProfile">Salvar alterações</button>
+        <button class="btn btn-danger" id="logoutProfile">Sair da conta</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Painel da Dona (integrado) ===== -->
+  <div id="adminPanel" class="admin-panel hidden">
+    <header class="admin-header">
+      <div class="admin-header-inner">
+        <a href="#" class="logo admin-logo">T<span>&</span>E <small>Variedades</small></a>
+        <div class="admin-header-actions">
+          <a href="#" id="adminViewStore" class="btn-link">↩ Voltar para a loja</a>
+          <button id="logoutBtn" class="btn-link">Sair</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="admin-tabs">
+      <button class="admin-tab active" data-tab="dashboard">📊 Resumo</button>
+      <button class="admin-tab" data-tab="products">🧴 Produtos</button>
+      <button class="admin-tab" data-tab="orders">📦 Pedidos</button>
+      <button class="admin-tab" data-tab="coupons">🎟️ Cupons</button>
+      <button class="admin-tab" data-tab="settings">⚙️ Frete & Loja</button>
+    </nav>
+
+    <main class="admin-main">
+      <section id="tab-dashboard" class="tab-panel active">
+        <h2 class="tab-title">Oi, Dona! 👋</h2>
+        <div class="stat-cards">
+          <div class="stat-card"><span>Produtos ativos</span><h3 id="statProducts">0</h3></div>
+          <div class="stat-card"><span>Pedidos</span><h3 id="statOrders">0</h3></div>
+          <div class="stat-card"><span>Receita (vendas)</span><h3 id="statRevenue">R$ 0,00</h3></div>
+          <div class="stat-card"><span>Produtos em oferta</span><h3 id="statOffers">0</h3></div>
+        </div>
+        <div class="quick-actions">
+          <h3>Ações rápidas</h3>
+          <div class="qa-grid">
+            <button class="qa-btn" data-goto="products" data-action="new">➕ Cadastrar produto</button>
+            <button class="qa-btn" data-goto="orders">📦 Ver pedidos</button>
+            <button class="qa-btn" data-goto="settings">🚚 Ajustar frete</button>
+            <button class="qa-btn" data-goto="settings">🛍️ Trocar aviso da loja</button>
+            <button class="qa-btn" data-goto="coupons" data-action="new-coupon">🎟️ Criar cupom</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-products" class="tab-panel">
+        <div class="tab-head">
+          <h2 class="tab-title">Gerencie seus produtos</h2>
+          <button id="newProductBtn" class="btn btn-primary">➕ Novo produto</button>
+        </div>
+        <form id="productForm" class="product-form hidden">
+          <h3 id="productFormTitle">Novo produto</h3>
+          <div class="form-grid">
+            <div class="form-field">
+              <label>Título *</label>
+              <input type="text" id="pName" placeholder="Ex.: Batom Matte Rosé" required>
+            </div>
+            <div class="form-field">
+              <label>Categoria *</label>
+              <select id="pCategory">
+                <option value="maquiagem">Maquiagem</option>
+                <option value="skincare">Skincare</option>
+                <option value="perfumaria">Perfumaria</option>
+                <option value="higiene">Higiene</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Preço (R$) *</label>
+              <input type="number" id="pPrice" placeholder="59.90" step="0.01" min="0" required>
+            </div>
+            <div class="form-field">
+              <label>Preço original (de:)</label>
+              <input type="number" id="pOldPrice" placeholder="79.90 (deixe vazio sem oferta)" step="0.01" min="0">
+            </div>
+            <div class="form-field full">
+              <label>Descrição *</label>
+              <textarea id="pDesc" placeholder="Descreva o produto..." required></textarea>
+            </div>
+            <div class="form-field">
+              <label>Foto do produto</label>
+              <input type="file" id="pImage" accept="image/*">
+              <small class="field-hint">Ajustamos e salvamos a foto automaticamente. Sem foto, usamos o emoji.</small>
+            </div>
+            <div class="form-field">
+              <label>Emoji (sem foto)</label>
+              <input type="text" id="pEmoji" value="🧴" maxlength="4" placeholder="🧴">
+            </div>
+          </div>
+          <div id="pImagePreview" class="img-preview hidden"><img id="pImagePreviewImg" alt=""><button type="button" id="pClearImage" class="btn-link danger">Remover foto</button></div>
+          <div class="form-actions">
+            <button type="submit" id="productSubmit" class="btn btn-primary">Salvar produto</button>
+            <button type="button" id="productCancel" class="btn btn-outline">Cancelar</button>
+          </div>
+        </form>
+        <div id="adminProductsList" class="products-list"></div>
+      </section>
+
+      <section id="tab-orders" class="tab-panel">
+        <h2 class="tab-title">Pedidos & frete</h2>
+        <p class="tab-sub">Atualize o status e o código de rastreio (Frete Fácil). O cliente acompanha em “Minhas compras”.</p>
+        <div id="adminOrdersList" class="orders-list"></div>
+      </section>
+
+      <!-- Coupons -->
+      <section id="tab-coupons" class="tab-panel">
+        <div class="tab-head">
+          <h2 class="tab-title">Cupons 🎟️</h2>
+          <button id="newCouponBtn" class="btn btn-primary">➕ Novo cupom</button>
+        </div>
+        <p class="tab-sub">Cupons <strong>automáticos</strong> (boas-vindas e metas de compra) valem para todos os clientes. Cupons <strong>manuais</strong> são públicos e você limita quantas vezes podem ser usados.</p>
+
+        <form id="couponForm" class="coupon-form hidden">
+          <h3 id="couponFormTitle">Novo cupom</h3>
+          <div class="form-grid">
+            <div class="form-field">
+              <label>Código *</label>
+              <input type="text" id="cCode" placeholder="Ex.: BEMVINDA10, TE50, VIP2026" required>
+            </div>
+            <div class="form-field">
+              <label>Tipo</label>
+              <select id="cType">
+                <option value="percent">% de desconto</option>
+                <option value="fixed">R$ de desconto</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Valor *</label>
+              <input type="number" id="cValue" step="0.01" min="0" placeholder="10">
+            </div>
+            <div class="form-field">
+              <label>Compra mínima (R$, 0 = sem mínimo)</label>
+              <input type="number" id="cMinSpend" step="0.01" min="0" value="0">
+            </div>
+            <div class="form-field">
+              <label>Quantas vezes pode ser usado (0 = à vontade)</label>
+              <input type="number" id="cUses" min="0" value="0">
+            </div>
+            <div class="form-field">
+              <label>Como libera?</label>
+              <select id="cGrant">
+                <option value="manual">Manual (todo mundo pode digitar o código)</option>
+                <option value="welcome">Boas-vindas (todo cadastro ganha)</option>
+                <option value="threshold">Ao gastar um valor</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field" id="cThresholdWrap">
+            <label>Valor de compra (R$) para liberar automaticamente</label>
+            <input type="number" id="cThreshold" step="0.01" min="0" placeholder="150">
+          </div>
+          <div class="form-field full">
+            <label>Texto exibido para o cliente</label>
+            <input type="text" id="cTitle" placeholder="Ex.: Gastou R$150 → ganhou 10% OFF">
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="couponSubmit" class="btn btn-primary">Salvar cupom</button>
+            <button type="button" id="couponCancel" class="btn btn-outline">Cancelar</button>
+          </div>
+        </form>
+
+        <div id="adminCouponsList" class="coupons-list"></div>
+      </section>
+
+      <section id="tab-settings" class="tab-panel">
+        <h2 class="tab-title">Frete & configurações da loja</h2>
+        <div class="settings-card">
+          <h3>🚚 Frete Fácil</h3>
+          <p class="tab-sub">O frete é calculado como uma porcentagem do valor do carrinho (padrão dos Frete Fácil). Você define o percentual.</p>
+          <div class="settings-row">
+            <div class="form-field">
+              <label>Percentual padrão do frete (%)</label>
+              <input type="number" id="shipPercent" step="0.1" min="0" max="100">
+            </div>
+            <div class="form-field">
+              <label>Nome do frete exibido na loja</label>
+              <input type="text" id="shipText" placeholder="Envio via Frete Fácil">
+            </div>
+          </div>
+          <label class="toggle-row">
+            <input type="checkbox" id="shipActive" checked>
+            <span>Frete ativo (desmarque para frete grátis na loja)</span>
+          </label>
+          <button id="saveShip" class="btn btn-primary">Salvar frete</button>
+        </div>
+        <div class="settings-card">
+          <h3>🛍️ Aviso no topo da loja</h3>
+          <p class="tab-sub">Aparece como uma faixa colorida no topo do site (ex.: "Promoção de batons 20% OFF!").</p>
+          <textarea id="bannerText" placeholder="Ex.: 🔥 Só hoje: frete grátis acima de R$ 100!" rows="2"></textarea>
+          <button id="saveBanner" class="btn btn-primary">Salvar aviso</button>
+        </div>
+        <div class="settings-card">
+          <h3>💳 Pix real (Woovi)</h3>
+          <p class="tab-sub">Cole os dados da AppID para gerar o QR Code Pix na sua conta Woovi no checkout. Sem preencher, o QR é gerado pela loja (pix avulso).</p>
+          <div class="form-field">
+            <label>AppID da Woovi</label>
+            <input type="password" id="wooviAppId" placeholder="Q2xpZW50X0lk_..." autocomplete="off">
+          </div>
+          <div class="form-field">
+            <label>Chave Pix da loja (apenas se não usar a Woovi)</label>
+            <input type="text" id="wooviPixKey" placeholder="ex.: 6b6ada5a-d1d4-46e3-af76-d0b2acf76d2d" autocomplete="off">
+          </div>
+          <button id="saveWoovi" class="btn btn-primary">Salvar Woovi</button>
+          <p class="tab-sub">Após o cliente pagar, abra o pedido na aba "Pedidos" e use "Verificar Pix" para confirmar o pagamento.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <a class="wa-float" id="waFloat" href="#" aria-label="Falar no WhatsApp" title="Fale com a gente no WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M16.04 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.4 1.64 6.24L3.2 28.8l6.73-1.75a12.74 12.74 0 0 0 6.11 1.56h.01c7.05 0 12.8-5.74 12.8-12.8 0-3.42-1.33-6.63-3.75-9.05a12.7 12.7 0 0 0-9.06-3.56zm0 23.02h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4 .1 1.07-3.9-.25-.4a10.55 10.55 0 0 1-1.62-5.65c0-5.86 4.77-10.63 10.64-10.63 2.84 0 5.5 1.11 7.51 3.12a10.56 10.56 0 0 1 3.11 7.52c0 5.86-4.77 10.63-10.63 10.63zm5.83-7.96c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.54-.71-.55l-.61-.01c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.62 0 1.55 1.13 3.04 1.29 3.25.16.21 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.76.24 1.44.21 1.98.13.6-.09 1.89-.77 2.16-1.52.27-.75.27-1.39.19-1.52-.08-.13-.29-.21-.61-.37z"/></svg>
+  </a>
+
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+<script src="js/guard.js"></script>
+<script src="js/vendor/qrcode.js"></script>
+<script src="js/vendor/emailjs.min.js"></script>
+<script src="js/admin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
